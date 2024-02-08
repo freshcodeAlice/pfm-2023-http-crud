@@ -1,0 +1,11 @@
+{
+    "development": {
+        "user": "postgres",
+        "password": "718",
+        "host": "localhost",
+        "database": "pfm_crud_cat",
+        "port": 5432
+    },
+    "test": {},
+    "production": {}
+}
