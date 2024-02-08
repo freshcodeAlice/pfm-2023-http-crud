@@ -1,6 +1,15 @@
 const {Cat} = require('../models');
 
-module.exports.createOne = () => {}
+module.exports.createOne = async (req, res, next) => {
+    try {
+        const {body} = req;
+        const createdCat = await Cat.create(body);
+        res.status(201).send(createdCat);
+    } catch (error) {
+        //
+        res.status(400);
+    }
+}
 
 module.exports.getAll = async (req, res, next) => {
     try {
@@ -35,5 +44,11 @@ module.exports.deleteOne = async (req, res, next) => {
 }
 // метод контроллера + ручка на запит
 
-module.exports.updateOne = () => {}
+module.exports.updateOne = () => {
+    try {
+        const {body, params: {catId}} = req;
+    } catch(error) {
+
+    }
+}
 

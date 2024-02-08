@@ -8,6 +8,7 @@ app.get('/cats/:catId', CatController.getOne);
 
 app.delete('/cats/:catId', CatController.deleteOne);
 app.post('/cats', bodyParser, CatController.createOne);
+app.put('/cats/:catId', bodyParser, CatController.updateOne);
 
 module.exports = app;
 
@@ -20,7 +21,7 @@ module.exports = app;
 GET http://localhost:5000/users/ HTTP/1.1
 
 
-CREATE - post
+CREATE - +post
 READ - +getAll, +getOne
 UPDATE - put
 DELETE - +delete
