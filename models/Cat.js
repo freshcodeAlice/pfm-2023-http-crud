@@ -9,11 +9,21 @@ class Cat {
         return rows
     }
 
-    static async findByPk() {}
+    static async findByPk(id) {
+        // знайти 1 кота за його id
+        const {rows} = await this._client.query(`SELECT * FROM ${this._tableName} WHERE id = ${id}`);
+        return rows
+    }
+
+    static async deleteByPk(id) {
+        // видалити 1 кота з БД за його id
+        const {rows} = await this._client.query(`DELETE FROM ${this._tableName} WHERE id = ${id} RETURNING *`);
+        return rows;
+    }
 
     static async updateByPk() {}
 
-    static async deleteByPk() {}
+
 }
 
 module.exports = Cat;
