@@ -44,11 +44,13 @@ module.exports.deleteOne = async (req, res, next) => {
 }
 // метод контроллера + ручка на запит
 
-module.exports.updateOne = () => {
+module.exports.updateOne = async (req, res, next) => {
     try {
         const {body, params: {catId}} = req;
+        const updated = await Cat.updateByPk({id: catId, updateValues: body});
+        res.status(200).send(updated)
     } catch(error) {
-
+        res.status(404);
     }
 }
 
