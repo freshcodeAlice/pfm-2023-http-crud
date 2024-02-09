@@ -1,16 +1,13 @@
-class Cat {
-    static _tableName = 'cats';
+class Owner {
+    static _tableName = 'owners';
     static _client = null;
 
 
     static _attributes = {
-        name: 'string',
-        breed: 'string',
-        color: 'string',
-        age: 'number',
-        weight: 'number',
-        favorite: 'string',
-        owner_id: 'number'
+        first_name: 'string',
+        last_name: 'string',
+        address: 'string',
+        phone: 'string'
     }
 
     static async create(insertValues) {
@@ -90,6 +87,11 @@ class Cat {
     }
 
 
+    static async addCat({catId, ownerId}) {
+       const str = `UPDATE cats SET owner_id = ${ownerId} WHERE id = ${catId} RETURNING *`;
+       const {rows} = await this._client.query(str);
+       return rows; 
+    }
 }
 
-module.exports = Cat;
+module.exports = Owner;
